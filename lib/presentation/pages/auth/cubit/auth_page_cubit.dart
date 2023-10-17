@@ -52,6 +52,9 @@ class AuthPageCubit extends Cubit<AuthPageState> {
             await _authRepository.signInWithEmailAndPassword(email, password);
         if (user != null) {
           _authCubit.setUser(user);
+
+          await Future.delayed(const Duration(seconds: 2));
+
           emit(SignInSuccess(
             loginForm: loginFormKey,
             signUpForm: signUpFormKey,
@@ -62,7 +65,10 @@ class AuthPageCubit extends Cubit<AuthPageState> {
       }
     } catch (e) {
       emit(SignInError(
-          error: e, loginForm: loginFormKey, signUpForm: signUpFormKey));
+        error: e,
+        loginForm: loginFormKey,
+        signUpForm: signUpFormKey,
+      ));
     }
   }
 
@@ -87,6 +93,9 @@ class AuthPageCubit extends Cubit<AuthPageState> {
 
         if (user != null) {
           _authCubit.setUser(user);
+
+          await Future.delayed(const Duration(seconds: 2));
+
           emit(SignUpSuccess(
             loginForm: loginFormKey,
             signUpForm: signUpFormKey,
@@ -97,7 +106,10 @@ class AuthPageCubit extends Cubit<AuthPageState> {
       }
     } catch (e) {
       emit(SignUpError(
-          error: e, loginForm: loginFormKey, signUpForm: signUpFormKey));
+        error: e,
+        loginForm: loginFormKey,
+        signUpForm: signUpFormKey,
+      ));
     }
   }
 }

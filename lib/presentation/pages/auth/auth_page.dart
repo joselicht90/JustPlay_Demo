@@ -7,6 +7,7 @@ import 'package:just_play_demo/presentation/pages/auth/cubit/auth_page_cubit.dar
 import 'package:just_play_demo/presentation/pages/auth/login_screen.dart';
 import 'package:just_play_demo/presentation/pages/auth/sign_up_screen.dart';
 import 'package:just_play_demo/presentation/routes/routes.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -37,15 +38,29 @@ class AuthPageConsumer extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: state is SigninIn
-                  ? const LoginScreen()
-                  : const SignUpScreen(),
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  height: 30.h,
+                  child: Image.asset(
+                    'assets/images/just_play_dark.png',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    child: state is SigninIn
+                        ? const LoginScreen()
+                        : const SignUpScreen(),
+                  ),
+                ),
+              ],
             ),
           );
         },

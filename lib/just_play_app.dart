@@ -5,6 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:just_play_demo/data/global_blocs/auth_cubit.dart';
 import 'package:just_play_demo/injectable.dart';
+import 'package:just_play_demo/presentation/themes/app_theme.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'presentation/routes/navigation_service.dart';
 
@@ -13,15 +15,19 @@ class JustPlayApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: getIt<AuthCubit>()),
-        // BlocProvider.value(value: getIt<LocalizationCubit>()),
-        // BlocProvider.value(value: getIt<ThemeCubit>()),
-        // BlocProvider.value(value: getIt<LocalDataCubit>()),
-        // BlocProvider.value(value: getIt<DiceRollCubit>()),
-      ],
-      child: const _JustPlayConsumer(),
+    return ResponsiveSizer(
+      builder: (context, orientation, screenType) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: getIt<AuthCubit>()),
+            // BlocProvider.value(value: getIt<LocalizationCubit>()),
+            // BlocProvider.value(value: getIt<ThemeCubit>()),
+            // BlocProvider.value(value: getIt<LocalDataCubit>()),
+            // BlocProvider.value(value: getIt<DiceRollCubit>()),
+          ],
+          child: const _JustPlayConsumer(),
+        );
+      },
     );
   }
 }
@@ -48,6 +54,7 @@ class _JustPlayConsumerState extends State<_JustPlayConsumer> {
 
     return MaterialApp.router(
       title: 'Just Play',
+      theme: AppTheme.lightTheme,
       localizationsDelegates: const [
         //AppLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

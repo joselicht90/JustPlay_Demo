@@ -12,64 +12,61 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocBuilder<AuthPageCubit, AuthPageState>(
-        builder: (context, state) {
-          final cubit = context.read<AuthPageCubit>();
-          return FormBuilder(
-            key: state.signUpForm,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 50,
+    return BlocBuilder<AuthPageCubit, AuthPageState>(
+      builder: (context, state) {
+        final cubit = context.read<AuthPageCubit>();
+        return FormBuilder(
+          key: state.signUpForm,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              JPFormTextField(
+                name: 'email',
+                label: 'Email',
+                keyboardType: TextInputType.emailAddress,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(),
+                  FormBuilderValidators.email(),
+                ]),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              JPFormTextField(
+                name: 'password',
+                label: 'Password',
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: FormBuilderValidators.required(),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              JPFormTextField(
+                name: 'confirm_password',
+                label: 'Confirm Password',
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: FormBuilderValidators.required(),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () {
+                    cubit.signUpWithEmailAndPassword();
+                  },
+                  child: const Text('Sign Up'),
                 ),
-                JPFormTextField(
-                  name: 'email',
-                  label: 'Email',
-                  keyboardType: TextInputType.emailAddress,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.email(),
-                  ]),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                JPFormTextField(
-                  name: 'password',
-                  label: 'Password',
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: FormBuilderValidators.required(),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                JPFormTextField(
-                  name: 'confirm_password',
-                  label: 'Confirm Password',
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: FormBuilderValidators.required(),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        onPressed: () {
-                          cubit.signUpWithEmailAndPassword();
-                        },
-                        child: const Text('Sign Up'),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
