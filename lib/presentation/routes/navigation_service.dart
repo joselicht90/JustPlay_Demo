@@ -17,7 +17,11 @@ abstract class NavigationService {
     return _curRouter ??= getRouter();
   }
 
-  /// Navigates to a desired widget
+  /// Declaration of the go router behaviour. Go router is a package supported
+  /// by flutter.
+  /// https://pub.dev/packages/go_router
+  /// There is a builder package that makes it easier to use but I haven't study
+  /// it yet
   static GoRouter getRouter() {
     return GoRouter(
       errorBuilder: (context, state) {

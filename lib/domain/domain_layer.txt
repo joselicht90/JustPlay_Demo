@@ -1,0 +1,2 @@
+I didn't feel the need to use a domain layer for the demo, but in other cases,
+for a real app, it's a good place to handle bussiness logic instead of the blocs.

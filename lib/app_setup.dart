@@ -12,6 +12,8 @@ Future<void> appInit(Widget Function() initApp) async {
   runApp(initApp());
 }
 
+// Config values for the app
+// We could store this with shared prefs in the future
 abstract class AppConfigs {
   static const String apiKey =
       'NXZ2UEJjQzlYbHBMWTNOU0E1ZlROVHNiVm5lSEQ0RzgxeUlTOFRqaQ==';

@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// This is an error handler that will show alerts according to the system
+// altough flutter now has a way of making adaptative dialogs, this has more
+// control over it
 class UiErrorHanlder {
   static handleErrors(String? message, BuildContext context) {
     if (message != null) {

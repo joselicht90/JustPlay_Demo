@@ -8,11 +8,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'presentation/routes/navigation_service.dart';
 
+// Here we configure the app
 class JustPlayApp extends StatelessWidget {
   const JustPlayApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Responsive sizer is an awesome package for making your app responsive
+    // https://pub.dev/packages/responsive_sizer
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
         return MultiBlocProvider(
@@ -38,6 +41,9 @@ class _JustPlayConsumerState extends State<_JustPlayConsumer> {
 
   @override
   Widget build(BuildContext context) {
+    //For easyness of development we lock the app to portrait mode
+    //In case we want to make the app more apealing for tablets we can disable
+    //and develop with landsace mode in mind
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,

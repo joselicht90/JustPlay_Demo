@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:just_play_demo/data/models/game.dart';
 import 'package:just_play_demo/extensions/context_extensions.dart';
@@ -27,10 +29,13 @@ class GameListTile extends StatelessWidget {
               topLeft: Radius.circular(10),
               bottomLeft: Radius.circular(10),
             ),
-            child: Image.asset(
-              game.image!,
-              fit: BoxFit.cover,
-              width: 15.w,
+            child: SizedBox(
+              height: 7.h,
+              child: Image.asset(
+                game.image!,
+                fit: BoxFit.fill,
+                width: 15.w,
+              ),
             ),
           ),
           const SizedBox(

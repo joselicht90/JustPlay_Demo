@@ -8,6 +8,7 @@ import 'injectable.config.dart';
 
 final getIt = GetIt.instance;
 
+//This neat configuration let us make clases injectables.
 @InjectableInit(
   initializerName: 'init',
   preferRelativeImports: true,
@@ -16,6 +17,7 @@ final getIt = GetIt.instance;
 )
 Future<void> configureDependencies() async => await getIt.init();
 
+// We set a module for shared prefs to be injectable
 @module
 abstract class InjectableModule {
   @preResolve
@@ -23,6 +25,7 @@ abstract class InjectableModule {
       SharedPreferences.getInstance();
 }
 
+// Same for the dio client for our locations api
 @module
 abstract class DioProvider {
   @singleton

@@ -4,6 +4,9 @@ import 'package:just_play_demo/data/global_blocs/auth_cubit.dart';
 import 'package:just_play_demo/injectable.dart';
 import 'package:just_play_demo/presentation/routes/routes.dart';
 
+// Redirects are the best way to handle behaviour while navigating
+// for example, the most common is that if the user is no authenticathed
+// we redirect into the login screen.
 abstract class AppRedirects {
   static Future<String?> globalRedirect(
     BuildContext context,

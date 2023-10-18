@@ -2,6 +2,7 @@
 
 import 'package:intl/intl.dart';
 
+// A lot of extension methods for displaying date time and other things
 extension DateTimeExtensions on DateTime {
   String formatMMMddYYYY() {
     final formatter = DateFormat('MMM dd, yyyy');

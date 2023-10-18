@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+//Set of transitions to use throw the app while navigating
 class FadeTransitionPage extends CustomTransitionPage<void> {
   FadeTransitionPage({
     required LocalKey key,
