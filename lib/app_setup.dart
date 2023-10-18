@@ -11,3 +11,10 @@ Future<void> appInit(Widget Function() initApp) async {
 
   runApp(initApp());
 }
+
+abstract class AppConfigs {
+  static const String apiKey =
+      'NXZ2UEJjQzlYbHBMWTNOU0E1ZlROVHNiVm5lSEQ0RzgxeUlTOFRqaQ==';
+  static const String apiKeyHeader = 'X-CSCAPI-KEY';
+  static const String baseUrl = 'https://api.countrystatecity.in/v1';
+}

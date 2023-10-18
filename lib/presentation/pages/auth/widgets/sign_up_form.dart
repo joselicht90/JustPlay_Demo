@@ -60,7 +60,9 @@ class SignUpForm extends StatelessWidget {
                   onPressed: () {
                     cubit.signUpWithEmailAndPassword();
                   },
-                  child: const Text('Sign Up'),
+                  child: state is SignUpRequested
+                      ? const CircularProgressIndicator.adaptive()
+                      : const Text('Sign Up'),
                 ),
               )
             ],

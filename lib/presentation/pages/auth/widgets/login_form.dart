@@ -60,7 +60,9 @@ class LoginForm extends StatelessWidget {
                   onPressed: () {
                     authCubit.signInWithEmailAndPassword();
                   },
-                  child: const Text('Sign In'),
+                  child: state is SignInRequested
+                      ? const CircularProgressIndicator.adaptive()
+                      : const Text('Sign In'),
                 ),
               )
             ],

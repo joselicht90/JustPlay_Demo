@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:just_play_demo/presentation/pages/auth/auth_page.dart';
 import 'package:just_play_demo/presentation/pages/home/home_page.dart';
+import 'package:just_play_demo/presentation/pages/location/location_page.dart';
 import 'package:just_play_demo/presentation/routes/redirects.dart';
 import 'package:just_play_demo/presentation/routes/routes.dart';
 
@@ -25,7 +26,7 @@ abstract class NavigationService {
         );
       },
       navigatorKey: rootNavigatorKey,
-      initialLocation: AppRoutes.home,
+      initialLocation: AppRoutes.locationSelection,
       routes: [
         GoRoute(
           path: AppRoutes.login,
@@ -41,6 +42,14 @@ abstract class NavigationService {
           parentNavigatorKey: rootNavigatorKey,
           builder: (BuildContext context, GoRouterState state) {
             return const HomePage();
+          },
+        ),
+        GoRoute(
+          name: AppRoutes.locationSelection,
+          path: AppRoutes.locationSelection,
+          parentNavigatorKey: rootNavigatorKey,
+          builder: (BuildContext context, GoRouterState state) {
+            return const LocationPage();
           },
         ),
       ],

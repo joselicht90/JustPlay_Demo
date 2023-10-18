@@ -34,7 +34,7 @@ class AuthPageConsumer extends StatelessWidget {
           }
 
           if (state is SignUpSuccess || state is SignInSuccess) {
-            context.go(AppRoutes.home);
+            context.go(AppRoutes.locationSelection);
           }
         },
         builder: (context, state) {
