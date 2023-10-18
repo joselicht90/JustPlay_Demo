@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:just_play_demo/extensions/context_extensions.dart';
 import 'package:just_play_demo/injectable.dart';
 import 'package:just_play_demo/presentation/pages/location/cubit/location_page_cubit.dart';
+import 'package:just_play_demo/presentation/pages/location/widgets/city_input.dart';
+import 'package:just_play_demo/presentation/pages/location/widgets/country_input.dart';
+import 'package:just_play_demo/presentation/pages/location/widgets/state_input.dart';
+import 'package:just_play_demo/presentation/routes/routes.dart';
+import 'package:just_play_demo/presentation/shared/buttons/jp_logout_button.dart';
 
 class LocationPage extends StatelessWidget {
   const LocationPage({super.key});
@@ -32,25 +39,53 @@ class _LocationPageConsumerState extends State<LocationPageConsumer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<LocationPageCubit, LocationPageState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return Center(
-            child: FormBuilderDropdown(
-              name: 'Countries',
-              items: state is CountriesFetched
-                  ? state.countries
-                      .map((c) => DropdownMenuItem(
-                            child: Text(c.name),
-                            value: c.id,
-                          ))
-                      .toList()
-                  : [],
+    return BlocConsumer<LocationPageCubit, LocationPageState>(
+      listener: (context, state) {
+        if (state is LocationPageError) {
+          context.showError(error: state.error);
+        }
+
+        if (state is SearchingGames) {
+          context.go(AppRoutes.home, extra: state.city);
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            actions: const [JPLogoutButton()],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SvgPicture.asset(
+                    'assets/svg/current_location.svg',
+                    height: 200,
+                  ),
+                  const SizedBox(height: 20),
+                  const CountryInput(),
+                  const SizedBox(height: 20),
+                  const StateInput(),
+                  const SizedBox(height: 20),
+                  const CityInput(),
+                  const SizedBox(height: 20),
+                  if (state is CitySelected)
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed: () {
+                          context.read<LocationPageCubit>().searchGames();
+                        },
+                        child: const Text('Search Games!'),
+                      ),
+                    ),
+                ],
+              ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

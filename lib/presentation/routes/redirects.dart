@@ -17,4 +17,15 @@ abstract class AppRedirects {
 
     return null;
   }
+
+  static Future<String?> homeRedirect(
+    BuildContext context,
+    GoRouterState state,
+  ) async {
+    if (state.extra == null) {
+      return AppRoutes.locationSelection;
+    }
+
+    return null;
+  }
 }

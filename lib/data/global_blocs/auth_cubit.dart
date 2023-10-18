@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:just_play_demo/data/models/user.dart';
 import 'package:just_play_demo/data/repositories/auth_repository.dart';
 
+//This is a global bloc because it has to be accessible from anywhere in the app
 @singleton
 class AuthCubit extends Cubit<User?> {
   final AuthRepository _authRepository;
@@ -13,5 +14,10 @@ class AuthCubit extends Cubit<User?> {
 
   void setUser(User? user) {
     emit(user);
+  }
+
+  Future<void> logOut() async {
+    await _authRepository.logout();
+    emit(null);
   }
 }

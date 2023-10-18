@@ -5,11 +5,11 @@ part 'state.g.dart';
 
 @JsonSerializable()
 class CountryState extends Equatable {
-  int id;
-  String name;
-  String iso2;
+  final int id;
+  final String name;
+  final String iso2;
 
-  CountryState({
+  const CountryState({
     required this.id,
     required this.name,
     required this.iso2,

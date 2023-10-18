@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:just_play_demo/data/models/city.dart';
 import 'package:just_play_demo/presentation/pages/auth/auth_page.dart';
 import 'package:just_play_demo/presentation/pages/home/home_page.dart';
 import 'package:just_play_demo/presentation/pages/location/location_page.dart';
 import 'package:just_play_demo/presentation/routes/redirects.dart';
 import 'package:just_play_demo/presentation/routes/routes.dart';
+import 'package:just_play_demo/presentation/routes/transitions.dart';
 
 abstract class NavigationService {
   static final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -26,7 +28,7 @@ abstract class NavigationService {
         );
       },
       navigatorKey: rootNavigatorKey,
-      initialLocation: AppRoutes.locationSelection,
+      initialLocation: AppRoutes.home,
       routes: [
         GoRoute(
           path: AppRoutes.login,
@@ -40,16 +42,26 @@ abstract class NavigationService {
           name: AppRoutes.home,
           path: AppRoutes.home,
           parentNavigatorKey: rootNavigatorKey,
-          builder: (BuildContext context, GoRouterState state) {
-            return const HomePage();
+          pageBuilder: (context, state) {
+            final City city = state.extra as City;
+            return FadeTransitionPage(
+              key: state.pageKey,
+              child: HomePage(
+                city: city,
+              ),
+            );
           },
+          redirect: AppRedirects.homeRedirect,
         ),
         GoRoute(
           name: AppRoutes.locationSelection,
           path: AppRoutes.locationSelection,
           parentNavigatorKey: rootNavigatorKey,
-          builder: (BuildContext context, GoRouterState state) {
-            return const LocationPage();
+          pageBuilder: (context, state) {
+            return SlideTransitionPage(
+              key: state.pageKey,
+              child: const LocationPage(),
+            );
           },
         ),
       ],

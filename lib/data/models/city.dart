@@ -5,10 +5,10 @@ part 'city.g.dart';
 
 @JsonSerializable()
 class City extends Equatable {
-  int id;
-  String name;
+  final int id;
+  final String name;
 
-  City({
+  const City({
     required this.id,
     required this.name,
   });

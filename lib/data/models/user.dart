@@ -10,11 +10,11 @@ class User extends Equatable {
   final String? displayName;
   final String? email;
 
-  User({
-    this.id,
-    this.firebaseUserId,
-    this.displayName,
-    this.email,
+  const User({
+    required this.id,
+    required this.firebaseUserId,
+    required this.displayName,
+    required this.email,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

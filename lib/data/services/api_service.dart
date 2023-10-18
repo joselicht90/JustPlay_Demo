@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:just_play_demo/app_setup.dart';
 import 'package:just_play_demo/data/models/city.dart';
 import 'package:just_play_demo/data/models/country.dart';
 import 'package:just_play_demo/data/models/state.dart';
@@ -8,6 +7,8 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
 
+//This is a service, it's function is to be the implementation of api calls
+// with retrofit we can automate the process of making api endpoints
 @injectable
 @RestApi()
 abstract class ApiService {

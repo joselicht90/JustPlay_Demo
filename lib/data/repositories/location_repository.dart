@@ -4,6 +4,7 @@ import 'package:just_play_demo/data/models/country.dart';
 import 'package:just_play_demo/data/models/state.dart';
 import 'package:just_play_demo/data/services/api_service.dart';
 
+//This is an actual implementation of a repository against a real API
 @LazySingleton()
 class LocationRepository {
   final ApiService _apiService;

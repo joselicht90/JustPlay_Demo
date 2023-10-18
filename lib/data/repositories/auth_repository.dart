@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:just_play_demo/data/models/user.dart';
 import 'package:just_play_demo/data/repositories/local_data_repository.dart';
 
+//Just using local shared prefs to make a login system
 @lazySingleton
 class AuthRepository {
   final LocalDataRepository _localDataRepository;
@@ -17,7 +18,7 @@ class AuthRepository {
       return false;
     }
     try {
-      final currentUser = User.fromJson(jsonDecode(currentUserJson));
+      User.fromJson(jsonDecode(currentUserJson));
       return true;
     } catch (e) {
       return false;
@@ -84,5 +85,9 @@ class AuthRepository {
     } catch (e) {
       return null;
     }
+  }
+
+  Future<void> logout() async {
+    await _localDataRepository.deleteValue(LocalDataRepositoryKeys.loggedUser);
   }
 }
