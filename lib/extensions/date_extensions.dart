@@ -44,6 +44,11 @@ extension DateTimeExtensions on DateTime {
     return formatter.format(this);
   }
 
+  String formatMMMddHHmm() {
+    final formatter = DateFormat('MMM dd, hh:mm a');
+    return formatter.format(this);
+  }
+
   String formatHourMinutes() {
     final formatter = DateFormat('hh:mm');
     return formatter.format(this);

@@ -4,7 +4,7 @@ sealed class LocationPageState extends Equatable {
   const LocationPageState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 final class LocationPageInitial extends LocationPageState {}
@@ -15,7 +15,7 @@ final class LocationPageError extends LocationPageState {
   const LocationPageError(this.error);
 
   @override
-  List<Object> get props => [error];
+  List<Object?> get props => [error];
 }
 
 final class FetchingCountries extends LocationPageState {}
@@ -38,7 +38,7 @@ final class CountriesFetched extends LocationPageState {
   const CountriesFetched({required this.countries});
 
   @override
-  List<Object> get props => [countries];
+  List<Object?> get props => [countries];
 }
 
 final class StatesFetched extends CountriesFetched {
@@ -50,7 +50,7 @@ final class StatesFetched extends CountriesFetched {
   }) : super(countries: countries);
 
   @override
-  List<Object> get props => [states, countries];
+  List<Object?> get props => [states, countries];
 }
 
 final class CitiesFetched extends StatesFetched {
@@ -63,26 +63,26 @@ final class CitiesFetched extends StatesFetched {
   }) : super(states: states, countries: countries);
 
   @override
-  List<Object> get props => [cities, states, countries];
+  List<Object?> get props => [cities, states, countries];
 }
 
 final class CitySelected extends CitiesFetched {
-  final City city;
+  final City? city;
 
   const CitySelected({
-    required this.city,
+    this.city,
     required List<CountryState> states,
     required List<Country> countries,
     required List<City> cities,
   }) : super(states: states, countries: countries, cities: cities);
 
   @override
-  List<Object> get props => [city, states, countries, cities];
+  List<Object?> get props => [city, states, countries, cities];
 }
 
 final class SearchingGames extends CitySelected {
   const SearchingGames({
-    required City city,
+    required City? city,
     required List<CountryState> states,
     required List<Country> countries,
     required List<City> cities,

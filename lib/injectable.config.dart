@@ -40,7 +40,7 @@ extension GetItInjectableX on _i1.GetIt {
     final injectableModule = _$InjectableModule();
     gh.singleton<_i3.Dio>(dioProvider.dio());
     gh.lazySingleton<_i4.GamesRepository>(() => _i4.GamesRepository());
-    gh.factoryParam<_i5.HomePageCubit, _i6.City, dynamic>((
+    gh.factoryParam<_i5.HomePageCubit, _i6.City?, dynamic>((
       city,
       _,
     ) =>

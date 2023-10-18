@@ -25,9 +25,10 @@ abstract class AppRedirects {
     BuildContext context,
     GoRouterState state,
   ) async {
-    if (state.extra == null) {
-      return AppRoutes.locationSelection;
-    }
+    // for ease of use I'll disable this condition
+    // if (state.extra == null) {
+    //   return AppRoutes.locationSelection;
+    // }
 
     return null;
   }

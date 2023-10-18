@@ -19,6 +19,7 @@ class HomeGameList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Padding(
           padding: const EdgeInsets.all(15),
           child: Image.asset(

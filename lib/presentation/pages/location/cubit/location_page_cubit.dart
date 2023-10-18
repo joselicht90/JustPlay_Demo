@@ -81,7 +81,7 @@ class LocationPageCubit extends Cubit<LocationPageState> {
 
   Future<void> searchGames() async {
     emit(SearchingGames(
-      city: selectedCity!,
+      city: selectedCity,
       states: states,
       countries: countries,
       cities: cities,

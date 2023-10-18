@@ -12,7 +12,7 @@ part 'home_page_state.dart';
 @injectable
 class HomePageCubit extends Cubit<HomePageState> {
   final GamesRepository _gamesRepository;
-  final City city;
+  final City? city;
 
   List<Game> games = [];
 

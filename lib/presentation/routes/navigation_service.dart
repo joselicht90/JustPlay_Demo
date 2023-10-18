@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:just_play_demo/data/models/city.dart';
+import 'package:just_play_demo/data/models/game.dart';
 import 'package:just_play_demo/presentation/pages/auth/auth_page.dart';
+import 'package:just_play_demo/presentation/pages/game_detail/game_detail_page.dart';
 import 'package:just_play_demo/presentation/pages/home/home_page.dart';
 import 'package:just_play_demo/presentation/pages/location/location_page.dart';
 import 'package:just_play_demo/presentation/routes/redirects.dart';
@@ -46,16 +48,26 @@ abstract class NavigationService {
           name: AppRoutes.home,
           path: AppRoutes.home,
           parentNavigatorKey: rootNavigatorKey,
-          pageBuilder: (context, state) {
-            final City city = state.extra as City;
-            return FadeTransitionPage(
-              key: state.pageKey,
-              child: HomePage(
-                city: city,
-              ),
+          builder: (BuildContext context, GoRouterState state) {
+            final City? city = state.extra as City?;
+            return HomePage(
+              city: city,
             );
           },
           redirect: AppRedirects.homeRedirect,
+        ),
+        GoRoute(
+          path: AppRoutes.gameDetail,
+          name: AppRoutes.gameDetail,
+          parentNavigatorKey: rootNavigatorKey,
+          builder: (BuildContext context, GoRouterState state) {
+            //Ideally we receive the game ID as url param and fetch the game on entering the detail
+            //page. For simplicity I'm passing the game object as extra
+            final Game game = state.extra as Game;
+            return GameDetailPage(
+              game: game,
+            );
+          },
         ),
         GoRoute(
           name: AppRoutes.locationSelection,

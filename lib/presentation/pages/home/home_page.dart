@@ -8,7 +8,7 @@ import 'package:just_play_demo/presentation/pages/home/home_games_list.dart';
 import 'package:just_play_demo/presentation/pages/home/home_searching.dart';
 
 class HomePage extends StatelessWidget {
-  final City city;
+  final City? city;
   const HomePage({required this.city, super.key});
 
   @override

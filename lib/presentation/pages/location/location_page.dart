@@ -56,32 +56,39 @@ class _LocationPageConsumerState extends State<LocationPageConsumer> {
           ),
           body: Padding(
             padding: const EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SvgPicture.asset(
-                    'assets/svg/current_location.svg',
-                    height: 200,
-                  ),
-                  const SizedBox(height: 20),
-                  const CountryInput(),
-                  const SizedBox(height: 20),
-                  const StateInput(),
-                  const SizedBox(height: 20),
-                  const CityInput(),
-                  const SizedBox(height: 20),
-                  if (state is CitySelected)
-                    SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        onPressed: () {
-                          context.read<LocationPageCubit>().searchGames();
-                        },
-                        child: const Text('Search Games!'),
-                      ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/svg/current_location.svg',
+                          height: 200,
+                        ),
+                        const SizedBox(height: 20),
+                        const CountryInput(),
+                        const SizedBox(height: 20),
+                        const StateInput(),
+                        const SizedBox(height: 20),
+                        const CityInput(),
+                        const SizedBox(height: 20),
+                      ],
                     ),
-                ],
-              ),
+                  ),
+                ),
+                SafeArea(
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () {
+                        context.read<LocationPageCubit>().searchGames();
+                      },
+                      child: const Text('Search Games!'),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         );
