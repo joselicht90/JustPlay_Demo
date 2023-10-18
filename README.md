@@ -1,6 +1,6 @@
 # Just Play Demo
 
-Welcome to the "Just Play Demo" Flutter app repository! This repository contains the source code for the demo app that I was tasked to build as a tecnical test.
+Welcome to the "Just Play Demo" Flutter app repository! This repository contains the source code for the demo app that I was tasked to build as a technical test.
 ## Prerequisites
 
 Before you begin, make sure you have the following prerequisites installed on your system:
