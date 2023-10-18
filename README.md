@@ -1,11 +1,5 @@
 # Just Play Demo
 
-![screenshot_0](https://i.ibb.co/3hqtTLx/Simulator-Screenshot-i-Phone-15-2023-10-18-at-16-21-57.png)
-![screenshot_1](https://i.ibb.co/vwtXyzM/Simulator-Screenshot-i-Phone-15-2023-10-18-at-16-22-29.png)
-![screenshot_2](https://i.ibb.co/Rgyfq8w/Simulator-Screenshot-i-Phone-15-2023-10-18-at-16-22-32.png)
-![screenshot_3](https://i.ibb.co/FJ8TwFy/Simulator-Screenshot-i-Phone-15-2023-10-18-at-16-22-37.png)
-![screenshot_4](https://i.ibb.co/XDSnCGw/Simulator-Screenshot-i-Phone-15-2023-10-18-at-16-22-43.png)
-
 Welcome to the "Just Play Demo" Flutter app repository! This repository contains the source code for the demo app that I was tasked to build as a technical test.
 ## Prerequisites
 
